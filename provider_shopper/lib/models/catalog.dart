@@ -34,7 +34,7 @@ class CatalogModel {
   ///
   /// In this sample, the catalog is infinite, looping over [itemNames].
   Item getById(int id) => Item(id, itemNames[id % itemNames.length]);
-
+  
   /// Get item by its position in the catalog.
   Item getByPosition(int position) {
     // In this simplified case, an item's position in the catalog
@@ -49,15 +49,17 @@ class Item {
   final String name;
   final Color color;
   final int price = 42;
-
+  
   Item(this.id, this.name)
       // To make the sample app look nicer, each item is given one of the
       // Material Design primary colors.
       : color = Colors.primaries[id % Colors.primaries.length];
-
+      
+      // việc mà khai báo một thuộc tính đằng sau dấu 2 chấm tác dụng của nó chính là có thể gán trước 1 giá trị cho 1 thuộc tính ở bên trong class trước khi constructor thật sự chạy   
   @override
   int get hashCode => id;
-
+  // Lưu ý rằng mặc dù class Item không hề kế thừa một class nào khác nhưng vẫn có thể sử dụng @override lí do chính là bởi vì tất cả các class đều ngầm kế thừa lại class object 
+  // Và thực chất ra ở đây đang làm việc với 
   @override
   bool operator ==(Object other) => other is Item && other.id == id;
 }
